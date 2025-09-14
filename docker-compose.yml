@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: pcm_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: redis:7
+    container_name: pcm_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pcm_backend
+    restart: unless-stopped
+    env_file:
+      - backend/.env
+    depends_on:
+      - mongo
+      - redis
+    ports:
+      - "4000:4000"
+
+  workers:
+    build:
+      context: ./workers
+      dockerfile: Dockerfile
+    container_name: pcm_workers
+    restart: unless-stopped
+    env_file:
+      - workers/.env
+    depends_on:
+      - mongo
+      - redis
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pcm_frontend
+    restart: unless-stopped
+    env_file:
+      - frontend/.env
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+
+volumes:
+  mongo_data:
+
