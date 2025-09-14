@@ -1,0 +1,10 @@
+// Export all models for easy importing
+export { User, IUser } from './User';
+export { ProductMaster, IProductMaster } from './ProductMaster';
+export { PlatformItem, IPlatformItem } from './PlatformItem';
+export { PriceHistory, IPriceHistory } from './PriceHistory';
+export { Watchlist, IWatchlist } from './Watchlist';
+export { SearchLog, ISearchLog } from './SearchLog';
+export { SpendRecord, ISpendRecord } from './SpendRecord';
+export { Job, IJob } from './Job';
+export { Coupon, ICoupon } from './Coupon';
