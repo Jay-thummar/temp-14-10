@@ -1,0 +1,33 @@
+# General
+node_modules/
+.DS_Store
+dist/
+build/
+coverage/
+logs/
+tmp/
+.cache/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Editors
+.idea/
+.vscode/
+
+# Frontend
+.next/
+.nuxt/
+.vercel/
+
+# Docker
+**/.docker/**
+
+# Misc
+*.log
+*.pid
+*.seed
+*.local
+

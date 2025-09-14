@@ -1,0 +1,21 @@
+{
+  "name": "price-comparison-assistant",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MERN monorepo for a BuyHatke-style price comparison & shopping assistant",
+  "workspaces": [
+    "backend",
+    "workers",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build -w backend && npm run build -w workers && npm run build -w frontend",
+    "test": "npm run test -w backend && npm run test -w frontend",
+    "lint": "npm run lint -w backend && npm run lint -w frontend"
+  },
+  "engines": {
+    "node": ">=18.18.0",
+    "npm": ">=9"
+  }
+}
+
